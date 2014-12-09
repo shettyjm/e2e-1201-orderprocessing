@@ -1,0 +1,17 @@
+Received: from soabpm-vm ([127.0.0.1])
+          by RKALRA-LAP (JAMES SMTP Server 2.3.2) with SMTP ID 887
+          for <daniel@localhost.com>;
+          Wed, 25 Jun 2014 12:23:23 -0700 (PDT)
+Date: Wed, 25 Jun 2014 12:23:23 -0700 (PDT)
+From: adminuser@localhost.com
+To: daniel@localhost.com
+Message-ID: <1049030987.1.1403724203309.JavaMail.rkalra@RKALRA-LAP>
+Subject: Your order has been shipped
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+X-Priority: 3
+X-EmailDriver-Message-ID: localhost:1125@1645269737-0
+
+Your order#20146256112727has been shipped viaUSPS

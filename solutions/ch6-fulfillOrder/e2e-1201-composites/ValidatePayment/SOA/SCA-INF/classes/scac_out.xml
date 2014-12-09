@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>94</line>
+      <col>0</col>
+      <file>validatePaymentProcess</file>
+      <name>validatePaymentProcess</name>
+      <fix>You have stumbled onto a BPEL 2.0 validator bug. Please send us a test case to fix this problem.</fix>
+      <msg>Validator error on &lt;bpel:from> while running rule "OraFunctionsValidator.doXSLTransformForDoc.10" - exception "java.lang.NullPointerException" near (URI.java:3023).</msg>
+   </Fault>
+</Faults>

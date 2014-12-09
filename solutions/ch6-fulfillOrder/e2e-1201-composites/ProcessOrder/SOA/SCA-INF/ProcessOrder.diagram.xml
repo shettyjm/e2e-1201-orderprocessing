@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dgm:gDiagram xmlns:dgm="http://xmlns.oracle.com/sca/soadgm">
+    <dgm:gService name="receiveorder_client_ep">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="192" width="137" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="11" Y="185" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:outputPort name="receiveorder_client_ep" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://www.oracle.com/ProcessOrder#wsdl.interface(processOrderPortType)"/>
+        <dgm:nodeIcon URI="oracle/tip/tools/ide/fabric/resource/image/20x20/soap_service_20x20.pn" X="20" Y="4" width="20" height="20"/>
+        <dgm:sensorIcon URI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/sensor.png" X="111" Y="8" width="12" height="12"/>
+        <dgm:operations>
+            <dgm:item>process</dgm:item>
+        </dgm:operations>
+    </dgm:gService>
+    <dgm:gReference name="writeOrderToFile">
+        <dgm:body borderWidth="2" arcRad="20" X="706" Y="26" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="696" Y="19" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="writeOrderToFile" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/file/e2e-1201-composites/ProcessOrderTemplate/writeOrderToFile#wsdl.interface(Write_ptt)"/>
+        <dgm:nodeIcon URI="oracle/tip/tools/ide/fabric/resource/image/20x20/file_adapter_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>Write</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="writeOrderToDatabase">
+        <dgm:body borderWidth="2" arcRad="20" X="706" Y="144" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="696" Y="137" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="writeOrderToDatabase" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/db/e2e-1201-composites/ProcessOrderTemplate/writeOrderToDatabase#wsdl.interface(writeOrderToDatabase_ptt)"/>
+        <dgm:nodeIcon URI="oracle/tip/tools/ide/fabric/resource/image/20x20/database_adapter_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>insert</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="updateOrderStatus">
+        <dgm:body borderWidth="2" arcRad="20" X="706" Y="262" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="696" Y="255" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="updateOrderStatus" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/db/e2e-1201-composites/ProcessOrder/updateOrderStatus#wsdl.interface(updateOrderStatus_ptt)"/>
+        <dgm:nodeIcon URI="oracle/tip/tools/ide/fabric/resource/image/20x20/database_adapter_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>update</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="validatePayment">
+        <dgm:body borderWidth="2" arcRad="20" X="706" Y="380" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="696" Y="373" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="validatePayment" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://www.oracle.com/ValidatePayment#wsdl.interface(validatePaymentPortType)"/>
+        <dgm:nodeIcon URI="oracle/tip/tools/ide/fabric/resource/image/20x20/soap_service_20x20.pn" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>validate</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gComponent name="receiveOrder">
+        <dgm:body borderWidth="2" arcRad="20" X="254" Y="177" width="130" height="61">
+            <dgm:borderColor r="69" g="113" b="140"/>
+            <dgm:lightBgColor r="166" g="208" b="230"/>
+            <dgm:darkBgColor r="99" g="162" b="201"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="244" Y="170" width="150" height="77">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="receiveorder_client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://www.oracle.com/ProcessOrder#wsdl.interface(processOrderPortType)"/>
+        <dgm:outputPort name="validateAndProcessOrder.validateandprocessorder_client" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/e2e_1201_composites/ProcessOrderTemplate/validateAndProcessOrder#wsdl.interface(validateAndProcessOrder)"/>
+        <dgm:nodeIcon URI="oracle/tip/tools/ide/fabric/resource/image/20x20/bpel_process_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gComponent name="validateAndProcessOrder">
+        <dgm:body borderWidth="2" arcRad="20" X="480" Y="177" width="130" height="136">
+            <dgm:borderColor r="69" g="113" b="140"/>
+            <dgm:lightBgColor r="166" g="208" b="230"/>
+            <dgm:darkBgColor r="99" g="162" b="201"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="470" Y="170" width="150" height="152">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="validateandprocessorder_client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/e2e_1201_composites/ProcessOrderTemplate/validateAndProcessOrder#wsdl.interface(validateAndProcessOrder)"/>
+        <dgm:outputPort name="writeOrderToFile" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/file/e2e-1201-composites/ProcessOrderTemplate/writeOrderToFile#wsdl.interface(Write_ptt)"/>
+        <dgm:outputPort name="writeOrderToDatabase" X="120" Y="40" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/db/e2e-1201-composites/ProcessOrderTemplate/writeOrderToDatabase#wsdl.interface(writeOrderToDatabase_ptt)"/>
+        <dgm:outputPort name="updateOrderStatus" X="120" Y="65" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/db/e2e-1201-composites/ProcessOrder/updateOrderStatus#wsdl.interface(updateOrderStatus_ptt)"/>
+        <dgm:outputPort name="validatePayment" X="120" Y="90" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://www.oracle.com/ValidatePayment#wsdl.interface(validatePaymentPortType)"/>
+        <dgm:nodeIcon URI="oracle/tip/tools/ide/fabric/resource/image/20x20/bpel_process_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gWireLink source="receiveorder_client_ep" target="receiveOrder/receiveorder_client" width="2">
+        <dgm:gSegment X1="168" Y1="202" X2="244" Y2="202"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="receiveOrder/validateAndProcessOrder.validateandprocessorder_client" target="validateAndProcessOrder/validateandprocessorder_client" width="2">
+        <dgm:gSegment X1="394" Y1="202" X2="470" Y2="202"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="validateAndProcessOrder/writeOrderToFile" target="writeOrderToFile" width="2">
+        <dgm:gSegment X1="620" Y1="202" X2="644" Y2="202"/>
+        <dgm:gSegment X1="644" Y1="202" X2="644" Y2="36"/>
+        <dgm:gSegment X1="644" Y1="36" X2="696" Y2="36"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="validateAndProcessOrder/writeOrderToDatabase" target="writeOrderToDatabase" width="2">
+        <dgm:gSegment X1="620" Y1="227" X2="659" Y2="227"/>
+        <dgm:gSegment X1="659" Y1="227" X2="659" Y2="154"/>
+        <dgm:gSegment X1="659" Y1="154" X2="696" Y2="154"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="validateAndProcessOrder/updateOrderStatus" target="updateOrderStatus" width="2">
+        <dgm:gSegment X1="620" Y1="252" X2="659" Y2="252"/>
+        <dgm:gSegment X1="659" Y1="252" X2="659" Y2="272"/>
+        <dgm:gSegment X1="659" Y1="272" X2="696" Y2="272"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="validateAndProcessOrder/validatePayment" target="validatePayment" width="2">
+        <dgm:gSegment X1="620" Y1="277" X2="644" Y2="277"/>
+        <dgm:gSegment X1="644" Y1="277" X2="644" Y2="390"/>
+        <dgm:gSegment X1="644" Y1="390" X2="696" Y2="390"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+</dgm:gDiagram>

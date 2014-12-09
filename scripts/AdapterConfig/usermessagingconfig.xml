@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns1:MessagingConfiguration xmlns:ns1="http://www.oracle.com/ucs/messaging/config" xmlns:ns0="http://www.oracle.com/ucs/messaging/configtemplate">
+   <ns1:Driver name="usermessagingdriver-email" type="email">
+      <ns1:Property name="SupportedDeliveryTypes" value="EMAIL"/>
+      <ns1:Property name="SupportedContentTypes" value="text/plain,text/html,multipart/mixed,multipart/alternative,multipart/related"/>
+      <ns1:Property name="Capability" value="BOTH"/>
+      <ns1:Property name="Cost" value=""/>
+      <ns1:Property name="Speed" value=""/>
+      <ns1:Property name="SupportedCarriers" value=""/>
+      <ns1:Property name="SupportedProtocols" value="SMTP"/>
+      <ns1:Property name="SupportsCancel" value="false"/>
+      <ns1:Property name="SupportsReplace" value="false"/>
+      <ns1:Property name="SupportsStatusPolling" value="false"/>
+      <ns1:Property name="SupportsTracking" value="false"/>
+      <ns1:Property name="SupportedStatusTypes" value="DELIVERY_TO_GATEWAY_SUCCESS, DELIVERY_TO_GATEWAY_FAILURE, USER_REPLY_ACKNOWLEDGEMENT_SUCCESS, USER_REPLY_ACKNOWLEDGEMENT_FAILURE"/>
+      <ns1:Property name="SenderAddresses" value=""/>
+      <ns1:Property name="DefaultSenderAddress" value="EMAIL:adminuser@localhost"/>
+      <ns1:Property name="SendingQueuesInfo" value="OraSDPM/QueueConnectionFactory:OraSDPM/Queues/OraSDPMDriverDefSndQ1"/>
+      <ns1:Property name="MailAccessProtocol" value="POP3"/>
+      <ns1:Property name="RetryLimit" value="-1"/>
+      <ns1:Property name="MailDelFreq" value="600"/>
+      <ns1:Property name="AutoDelete" value="false"/>
+      <ns1:Property name="Debug" value="false"/>
+      <ns1:Property name="CheckMailFreq" value="30"/>
+      <ns1:Property name="ReceiveFolder" value="INBOX"/>
+      <ns1:Property name="OutgoingMailServer" value="localhost"/>
+      <ns1:Property name="OutgoingMailServerPort" value="1125"/>
+      <ns1:Property name="OutgoingMailServerSecurity" value="None"/>
+      <ns1:Property name="OutgoingDefaultFromAddr" value="EMAIL:adminuser@localhost"/>
+      <ns1:Property name="OutgoingUsername" value="adminuser"/>
+      <ns1:Property name="OutgoingPassword" value="welcome1"/>
+      <ns1:Property name="IncomingMailServer" value="localhost"/>
+      <ns1:Property name="IncomingMailServerPort" value="1110"/>
+      <ns1:Property name="IncomingMailServerSSL" value="false"/>
+      <ns1:Property name="IncomingMailIDs" value="adminuser@localhost"/>
+      <ns1:Property name="IncomingUserIDs" value="adminuser"/>
+      <ns1:Property name="IncomingUserPasswords" value="welcome1"/>
+      <ns1:Property name="ProcessingChunkSize" value="100"/>
+      <ns1:Property name="ImapAuthPlainDisable" value="false"/>
+   </ns1:Driver>
+   <ns1:Server>
+      <ns1:AppReceivingQueuesInfo>OraSDPM/QueueConnectionFactory:OraSDPM/Queues/OraSDPMAppDefRcvQ1</ns1:AppReceivingQueuesInfo>
+      <ns1:DuplicateMessageRetryDelay>30</ns1:DuplicateMessageRetryDelay>
+      <ns1:EngineCommandQueuesInfo>OraSDPM/QueueConnectionFactory:OraSDPM/Queues/OraSDPMEngineCmdQ</ns1:EngineCommandQueuesInfo>
+      <ns1:EnginePendingReceiveQueueInfo>OraSDPM/QueueConnectionFactory:OraSDPM/Queues/OraSDPMEnginePendingRcvQ</ns1:EnginePendingReceiveQueueInfo>
+      <ns1:EngineReceivingQueuesInfo>OraSDPM/QueueConnectionFactory:OraSDPM/Queues/OraSDPMEngineRcvQ1</ns1:EngineReceivingQueuesInfo>
+      <ns1:EngineSendingQueuesInfo>OraSDPM/QueueConnectionFactory:OraSDPM/Queues/OraSDPMEngineSndQ1</ns1:EngineSendingQueuesInfo>
+      <ns1:JpsContext></ns1:JpsContext>
+      <ns1:ReceivedmessageStatusEnabled>true</ns1:ReceivedmessageStatusEnabled>
+      <ns1:ResendDefault>2</ns1:ResendDefault>
+      <ns1:ResendDelay>30</ns1:ResendDelay>
+      <ns1:ResendMax>10</ns1:ResendMax>
+      <ns1:SecurityPrincipal>OracleSystemUser</ns1:SecurityPrincipal>
+      <ns1:SessionTimeout>9000</ns1:SessionTimeout>
+      <ns1:SupportedDeliveryTypes>EMAIL,SMS,IM,VOICE,WORKLIST,URI</ns1:SupportedDeliveryTypes>
+   </ns1:Server>
+</ns1:MessagingConfiguration>

@@ -1,0 +1,273 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+<soap:Header>
+    <soap:From>Partner1</soap:From>
+    <soap:DocType>EDI_XML_850</soap:DocType>
+    <soap:DocVersion>1.1</soap:DocVersion>
+</soap:Header>
+<soap:Body>    
+<Transaction-850 xmlns="http://www.edifecs.com/xdata/200" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" XDataVersion="1.0" Standard="X12" Version="V4010" CreatedDate="2007-04-10T17:16:24" CreatedBy="ECXEngine_837" GUID="{12345678-1234-1234-1234-123456789012}">
+   <Internal-Properties>
+      <Data-Structure Name="Interchange">
+         <Lookup Name="InterchangeSenderQual">ZZ</Lookup>
+         <Lookup Name="InterchangeSenderID">Partner1                 </Lookup>
+         <Lookup Name="InterchangeReceiverQual">ZZ</Lookup>
+         <Lookup Name="InterchangeReceiverID">MyCompany    </Lookup>
+         <Lookup Name="InterchangeControlVersion">00400</Lookup>
+         <Lookup Name="Standard">X12</Lookup>
+         <Property Name="InterchangeAuthorizationInfoQual">00</Property>
+         <Property Name="InterchangeAuthorizationInfo">          </Property>
+         <Property Name="InterchangeSecurityInfoQual">00</Property>
+         <Property Name="InterchangeSecurityInfo">          </Property>
+         <Property Name="InterchangeSenderQual">ZZ</Property>
+         <Property Name="InterchangeSenderID">Partner1                 </Property>
+         <Property Name="InterchangeReceiverQual">ZZ</Property>
+         <Property Name="InterchangeReceiverID">MyCompany    </Property>
+         <Property Name="InterchangeDate">041216</Property>
+         <Property Name="InterchangeTime">1900</Property>
+         <Property Name="InterchangeControlStandard_RepeatingSeparator">U</Property>
+         <Property Name="InterchangeControlVersion">00400</Property>
+         <Property Name="InterchangeControlNumber">000001688</Property>
+         <Property Name="InterchangeAckRequested">0</Property>
+         <Property Name="InterchangeUsageIndicator">P</Property>
+         <Property Name="InterchangeComponentElementSep">0x7d</Property>
+         <Property Name="DecimalSeparator"/>
+         <Property Name="ElementDelimiter">0x2a</Property>
+         <Property Name="ReleaseCharacter"/>
+         <Property Name="RepeatingSeparator"/>
+         <Property Name="SegmentDelimiter">0x7e</Property>
+         <Property Name="SubelementDelimiter">0x7d</Property>
+         <Property Name="InterchangeChildCount">1</Property>
+         <Property Name="InterchangeTrailerControlNumber">000001688</Property>
+         <Data-Structure Name="Group">
+            <Lookup Name="GroupSenderID">Partner1</Lookup>
+            <Lookup Name="GroupReceiverID">MyCompany</Lookup>
+            <Lookup Name="GroupVersionNumber">004010</Lookup>
+            <Property Name="GroupID">PO</Property>
+            <Property Name="GroupSenderID">Partner1</Property>
+            <Property Name="GroupReceiverID">MyCompany</Property>
+            <Property Name="GroupDate">20041216</Property>
+            <Property Name="GroupTime">1900</Property>
+            <Property Name="GroupControlNumber">1695</Property>
+            <Property Name="GroupAgencyCode">X</Property>
+            <Property Name="GroupVersionNumber">004010</Property>
+            <Property Name="GroupChildCount">1</Property>
+            <Property Name="GroupTrailerControlNumber">1695</Property>
+            <Data-Structure Name="Transaction">
+               <Lookup Name="TransactionID">850</Lookup>
+               <Property Name="TransactionID">850</Property>
+               <Property Name="TransactionControlNumber">16950001</Property>
+               <Property Name="TransactionImplementationReference"/>
+               <Property Name="TransactionChildCount">26</Property>
+               <Property Name="TransactionTrailerControlNumber">16950001</Property>
+            </Data-Structure>
+         </Data-Structure>
+      </Data-Structure>
+   </Internal-Properties>
+   <Segment-ST>
+      <Element-143>850</Element-143>
+      <Element-329>16950001</Element-329>
+   </Segment-ST>
+   <Segment-BEG>
+      <Element-353>00</Element-353>
+      <Element-92>SA</Element-92>
+      <Element-324>815455</Element-324>
+      <Element-328 xsi:nil="true"/>
+      <Element-373>20041216</Element-373>
+   </Segment-BEG>
+   <Segment-CUR>
+      <Element-98>SE</Element-98>
+      <Element-100>USD</Element-100>
+   </Segment-CUR>
+   <Segment-REF>
+      <Element-128>ZZ</Element-128>
+      <Element-127>875439</Element-127>
+      <Element-352>URGENT:  THE MyCompany EXCHANGE NAME MUST BE REMOVED FROM ALL ITEM</Element-352>
+   </Segment-REF>
+   <Segment-REF>
+      <Element-128>ZZ</Element-128>
+      <Element-127>875439</Element-127>
+      <Element-352>PACKAGING AND CASE LABELS.  SHIPMENTS RECEIVED</Element-352>
+   </Segment-REF>
+   <Segment-REF>
+      <Element-128>ZZ</Element-128>
+      <Element-127>875439</Element-127>
+      <Element-352>WITH THE MyCompany EXCHANGE NAME MAY BE REFUSED.</Element-352>
+   </Segment-REF>
+   <Segment-REF>
+      <Element-128>ZZ</Element-128>
+      <Element-127>875439</Element-127>
+      <Element-352>PLEASE RESPOND IN 1 WORKING DAY WITH ESTIMATED SHIP DATE.</Element-352>
+   </Segment-REF>
+   <Segment-REF>
+      <Element-128>ZZ</Element-128>
+      <Element-127>875439</Element-127>
+      <Element-352>ORDER MARKED RUSH - PLEASE RESPOND WITH EARLIEST POSSIBLE</Element-352>
+   </Segment-REF>
+   <Segment-REF>
+      <Element-128>ZZ</Element-128>
+      <Element-127>875439</Element-127>
+      <Element-352>SHIP AND DUE DATES.  EDI IF POSSIBLE, OTHERWISE FAX.</Element-352>
+   </Segment-REF>
+   <Segment-PER>
+      <Element-366>BD</Element-366>
+      <Element-93>Daniel Day-Lewis</Element-93>
+      <Element-365>TE</Element-365>
+      <Element-364>404-555-3630</Element-364>
+      <Element-365_1>EM</Element-365_1> 
+      <Element-364_1>gandalf.the.grey@wizards.com</Element-364_1> 
+   </Segment-PER>
+   <Segment-ITD>
+      <Element-336 xsi:nil="true"/>
+      <Element-333 xsi:nil="true"/>
+      <Element-338 xsi:nil="true"/>
+      <Element-370 xsi:nil="true"/>
+      <Element-351 xsi:nil="true"/>
+      <Element-446 xsi:nil="true"/>
+      <Element-386 xsi:nil="true"/>
+      <Element-362 xsi:nil="true"/>
+      <Element-388 xsi:nil="true"/>
+      <Element-389 xsi:nil="true"/>
+      <Element-342 xsi:nil="true"/>
+      <Element-352>3% 45 days DOI</Element-352>
+   </Segment-ITD>
+   <Segment-ITD>
+      <Element-336 xsi:nil="true"/>
+      <Element-333 xsi:nil="true"/>
+      <Element-338 xsi:nil="true"/>
+      <Element-370 xsi:nil="true"/>
+      <Element-351 xsi:nil="true"/>
+      <Element-446 xsi:nil="true"/>
+      <Element-386 xsi:nil="true"/>
+      <Element-362 xsi:nil="true"/>
+      <Element-388 xsi:nil="true"/>
+      <Element-389 xsi:nil="true"/>
+      <Element-342 xsi:nil="true"/>
+      <Element-352>18</Element-352>
+   </Segment-ITD>
+   <Segment-DTM>
+      <Element-374>275</Element-374>
+      <Element-373>20041217</Element-373>
+   </Segment-DTM>
+
+   <Loop-N1>
+      <Segment-N1>
+         <Element-98>ST</Element-98>
+         <Element-93>CENTRAL HOBBIT EXCHANGE</Element-93>
+         <Element-66>92</Element-66>
+         <Element-67>DS</Element-67>
+      </Segment-N1>
+      <Segment-N3>
+         <Element-166>1050 BAGGINS HILL ROAD</Element-166>
+      </Segment-N3>
+      <Segment-N4>
+         <Element-19>BAGEND</Element-19>
+         <Element-156>WA</Element-156>
+         <Element-116>98004</Element-116>
+         <Element-26>US</Element-26>
+      </Segment-N4>
+      <Segment-PER>
+          <Element-366>BD</Element-366>
+          <Element-93>BILBO BAGGINS</Element-93>
+          <Element-365>TE</Element-365>
+          <Element-364>555-555-3630</Element-364>
+          <Element-365_1>EM</Element-365_1> 
+          <Element-364_1>bilbo.baggins@bagend.com</Element-364_1> 
+      </Segment-PER>
+      <Segment-TD5>
+        <Element-133>1</Element-133> 
+        <Element-66>1</Element-66> 
+        <Element-67>CHEST #123</Element-67> 
+        <Element-91>2</Element-91> 
+        <Element-387>PONY EXPRESS</Element-387> 
+        <Element-368>AA</Element-368> 
+        <Element-309>A</Element-309> 
+        <Element-310>BAG1</Element-310> 
+        <Element-731>BS</Element-731> 
+        <Element-732>AA</Element-732> 
+        <Element-733>1</Element-733> 
+        <Element-284>01</Element-284> 
+        <Element-284_1>01</Element-284_1> 
+        <Element-284_2>01</Element-284_2> 
+        <Element-26>COU</Element-26> 
+     </Segment-TD5>
+   </Loop-N1>
+   <Loop-N1>
+      <Segment-N1>
+         <Element-98>BT</Element-98>
+         <Element-93>UNDER THE MOUNTAIN, INC.</Element-93>
+         <Element-66>92</Element-66>
+         <Element-67>004075826</Element-67>
+      </Segment-N1>
+      <Segment-N3>
+         <Element-166>666 LONELY MTN DR</Element-166>
+      </Segment-N3>
+      <Segment-N4>
+         <Element-19>LAKETOWN</Element-19>
+         <Element-156>WA</Element-156>
+         <Element-116>98004</Element-116>
+         <Element-26>US</Element-26>
+      </Segment-N4>
+      <Segment-PER>
+          <Element-366>BI</Element-366>
+          <Element-93>SMAUG THE DRAGON</Element-93>
+          <Element-365>TE</Element-365>
+          <Element-364>666-555-6666</Element-364>
+   </Segment-PER>
+   </Loop-N1>
+   <Loop-N1>
+      <Segment-N1>
+         <Element-98>VN</Element-98>
+         <Element-93>THROR AND SONS</Element-93>
+         <Element-66>92</Element-66>
+         <Element-67>0021505</Element-67>
+      </Segment-N1>
+   </Loop-N1>
+   <Loop-PO1>
+      <Segment-PO1>
+         <Element-350>0001</Element-350>
+         <Element-330>150</Element-330>
+         <Element-355_1>EA</Element-355_1>
+         <Element-212>.9209</Element-212>
+         <Element-639 xsi:nil="true"/>
+         <Element-235_1>VN</Element-235_1>
+         <Element-234_1>QQMC34X</Element-234_1>
+         <Element-235_2>BP</Element-235_2>
+         <Element-234_2>NON-STOCK</Element-234_2>
+         <Element-235_3>SK</Element-235_3>
+         <Element-234_3>SKU23</Element-234_3>
+         <Element-235_4>BL</Element-235_4>
+         <Element-234_4>SLV</Element-234_4>
+         <Element-235_5>MN</Element-235_5>
+         <Element-234_5>10G</Element-234_5>
+         <Element-235_6>C7</Element-235_6>
+         <Element-234_6>10</Element-234_6>
+      </Segment-PO1>
+      <Loop-PID>
+         <Segment-PID>
+            <Element-349>F</Element-349>
+            <Element-750 xsi:nil="true"/>
+            <Element-559 xsi:nil="true"/>
+            <Element-751 xsi:nil="true"/>
+            <Element-352>SILVER COIN - 10g</Element-352>
+         </Segment-PID>
+      </Loop-PID>
+      <Segment-PO4>
+         <Element-356>1</Element-356>
+      </Segment-PO4>
+   </Loop-PO1>
+   <Loop-CTT>
+      <Segment-CTT>
+         <Element-354>1</Element-354>
+      </Segment-CTT>
+      <Segment-AMT>
+         <Element-522_1>TT</Element-522_1>
+         <Element-782_1>138.135</Element-782_1>
+      </Segment-AMT>
+   </Loop-CTT>
+   <Segment-SE>
+      <Element-96>26</Element-96>
+      <Element-329>16950001</Element-329>
+   </Segment-SE>
+</Transaction-850>
+</soap:Body>    
+</soap:Envelope>

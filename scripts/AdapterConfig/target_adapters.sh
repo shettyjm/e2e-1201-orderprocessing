@@ -1,0 +1,1 @@
+$MW_HOME/oracle_common/common/bin/wlst.sh target_adapters.py

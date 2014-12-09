@@ -1,0 +1,18 @@
+<soas:Shipping xmlns:soas="http://www.oracle.com/soasample">
+	<soas:OrderNumber>20134127472626</soas:OrderNumber>
+	<soas:Address>
+		              <soas:FirstName>Daniel</soas:FirstName>
+		               <soas:LastName>Day-Lewis</soas:LastName>
+		               <soas:AddressLine>555 Beverly Lane</soas:AddressLine>
+			<soas:City>Hollywood</soas:City>
+			<soas:State>CA</soas:State>
+			<soas:ZipCode>12345</soas:ZipCode>
+			<soas:PhoneNumber>5127691108</soas:PhoneNumber>
+	</soas:Address>
+	<soas:ShippingSpeed>Standard</soas:ShippingSpeed>
+	<soas:ShippingProvider>
+	      <soas:Name>USPS</soas:Name>
+        </soas:ShippingProvider>
+        <soas:ShipMethod>USAPriority</soas:ShipMethod>
+        <soas:Status>ReadyForShip</soas:Status>
+</soas:Shipping>

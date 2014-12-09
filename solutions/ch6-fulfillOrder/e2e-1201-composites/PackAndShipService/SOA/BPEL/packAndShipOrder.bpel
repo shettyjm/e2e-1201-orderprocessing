@@ -1,0 +1,99 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Thu Aug 15 13:22:39 PDT 2013
+  Author:  sgeib
+  Type: BPEL 2.0 Process
+  Purpose: Empty BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="packAndShipOrder"
+               targetNamespace="http://xmlns.oracle.com/e2e_1201_composites/PackAndShipService/packAndShipOrder"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/e2e_1201_composites/PackAndShipService/packAndShipOrder"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://xmlns.oracle.com/e2e-1201-composites/PackAndShipService/packingService"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:ess="http://xmlns.oracle.com/scheduler"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns2="http://www.oracle.com/soasample"
+         xmlns:ui="http://xmlns.oracle.com/soa/designer"
+         xmlns:ns3="http://xmlns.oracle.com/pcbpel/adapter/ums/e2e-1201-composites/PackAndShipService/NotifyUser"
+         xmlns:ns4="http://platform.integration.oracle/blocks/adapter/fw/metadata/NotifyUser">
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <import namespace="http://xmlns.oracle.com/e2e-1201-composites/PackAndShipService/packingService"
+          location="../WSDLs/packingService.wsdl" importType="http://schemas.xmlsoap.org/wsdl/" ui:processWSDL="true"/>
+  <partnerLinks>
+    <partnerLink name="packingService" partnerLinkType="ns1:packingService" myRole="packingServiceProvider"/>
+    <partnerLink name="NotifyUser" partnerLinkType="ns3:SendNotification_plt" partnerRole="SendNotification_role"/>
+  </partnerLinks>
+  <variables>
+    <variable name="receiveShippingInfo_packAndShip_InputVariable" messageType="ns1:packAndShip_inputMessage"/>
+    <variable name="replyShipping_packAndShip_OutputVariable" messageType="ns1:packAndShip_outputMessage"/>
+    <variable name="orderNumber" type="xsd:string"/>
+    <variable name="orderStatus" type="xsd:string"/>
+    <variable name="notifyUserByEmail_SendNotification_InputVariable" messageType="ns3:SendNotification_msg"/>
+  </variables>
+  <sequence name="main">
+    <receive name="receiveShippingInfo" createInstance="yes" partnerLink="packingService"
+             portType="ns1:packingService_ptt" operation="packAndShip"
+             variable="receiveShippingInfo_packAndShip_InputVariable"/>
+    <empty name="ShippingService"/>
+    <assign name="setOrderStatusToShipped">
+      <copy bpelx:insertMissingToData="yes">
+        <from>"Shipped"</from>
+        <to>$receiveShippingInfo_packAndShip_InputVariable.request/ns2:Status</to>
+      </copy>
+      <copy ignoreMissingFromData="yes">
+        <from>$receiveShippingInfo_packAndShip_InputVariable.request/ns2:OrderNumber</from>
+        <to>$orderNumber</to>
+      </copy>
+      <copy>
+        <from>"Shipped"</from>
+        <to>$orderStatus</to>
+      </copy>
+    </assign>
+    <extensionActivity>
+      <bpelx:call name="updateOrderStatusToShipped"
+                  xmlns:sp1="http://xmlns.oracle.com/e2e_1201_composites/UpdateOrderStatusTemplate/updateOrderStatusSP"
+                  target="sp1:updateOrderStatusSP">
+        <bpelx:param name="orderNumber" copyByValue="yes" variable="orderNumber"/>
+        <bpelx:param name="orderStatus" copyByValue="yes" variable="orderStatus"/>
+      </bpelx:call>
+    </extensionActivity>
+    <assign name="assignShippingReply">
+      <copy>
+        <from>$receiveShippingInfo_packAndShip_InputVariable.request</from>
+        <to>$replyShipping_packAndShip_OutputVariable.reply</to>
+      </copy>
+    </assign>
+    <assign name="assignNotification">
+      <copy>
+        <from>concat("Your order #", $orderNumber, " has been shipped via ", $replyShipping_packAndShip_OutputVariable.reply/ns2:ShippingProvider/ns2:Name)</from>
+        <to>$notifyUserByEmail_SendNotification_InputVariable.body/ns4:payload</to>
+      </copy>
+    </assign>
+    <invoke name="notifyUserByEmail" portType="ns3:SendNotification_ptt" partnerLink="NotifyUser" operation="SendNotification"
+            inputVariable="notifyUserByEmail_SendNotification_InputVariable"/>
+    <reply name="replyShipping" variable="replyShipping_packAndShip_OutputVariable" partnerLink="packingService"
+           portType="ns1:packingService_ptt" operation="packAndShip"/>
+  </sequence>
+</process>

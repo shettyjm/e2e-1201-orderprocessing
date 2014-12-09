@@ -1,0 +1,43 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>140</line>
+      <col>0</col>
+      <file>fulfillOrder</file>
+      <name>fulfillOrder</name>
+      <fix>Make sure that the expression in &lt;bpel:condition> is a boolean expression.</fix>
+      <msg>The expression $queryCoherence_Get_OutputVariable.body/ns2:E2E1 ... in &lt;bpel:condition> is not a boolean expression.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>143</line>
+      <col>0</col>
+      <file>fulfillOrder</file>
+      <name>fulfillOrder</name>
+      <fix>Add a predicate to select an element from the sequence.</fix>
+      <msg>The XPath segment "child::ns2:E2E1201_ShippingMethods" selects a sequence of elements - a predicate MAY be needed to correctly select an element.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>165</line>
+      <col>0</col>
+      <file>fulfillOrder</file>
+      <name>fulfillOrder</name>
+      <fix>Add a predicate to select an element from the sequence.</fix>
+      <msg>The XPath segment "child::ns2:E2E1201_ShippingMethods" selects a sequence of elements - a predicate MAY be needed to correctly select an element.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>55</line>
+      <col>0</col>
+      <file>receiveOrderToShip</file>
+      <name>receiveOrderToShip</name>
+      <fix>You have stumbled onto a BPEL 2.0 validator bug. Please send us a test case to fix this problem.</fix>
+      <msg>Validator error on &lt;bpel:from> while running rule "OraFunctionsValidator.doXSLTransformForDoc.10" - exception "java.lang.NullPointerException" near (URI.java:3023).</msg>
+   </Fault>
+</Faults>

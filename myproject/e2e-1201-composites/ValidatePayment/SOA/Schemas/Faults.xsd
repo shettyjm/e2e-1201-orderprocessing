@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:f="http://www.example.org/faults"
+            targetNamespace="http://www.example.org/faults" elementFormDefault="qualified">
+  <xsd:element name="functionalFault">
+    <xsd:annotation>
+      <xsd:documentation>Functional fault</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="code" type="xsd:string"/>
+        <xsd:element name="summary" type="xsd:string"/>
+        <xsd:element name="details" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

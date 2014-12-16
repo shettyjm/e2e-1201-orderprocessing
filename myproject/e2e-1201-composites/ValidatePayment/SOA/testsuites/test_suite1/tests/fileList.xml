@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+  <entry key="validate_valid.xml"/>
+  <entry key="validate_datenotcorresponding.xml"/>
+  <entry key="validate_amountnotauthorized.xml"/>
+</properties>

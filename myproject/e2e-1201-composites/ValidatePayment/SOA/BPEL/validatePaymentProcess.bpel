@@ -1,0 +1,126 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Tue Dec 09 21:17:09 CET 2014
+  Author:  Emmanuel
+  Type: BPEL 2.0 Process
+  Purpose: Empty BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="validatePaymentProcess"
+               targetNamespace="http://xmlns.oracle.com/e2e_1201_orderprocessing/ValidatePayment/validatePaymentProcess"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/e2e_1201_orderprocessing/ValidatePayment/validatePaymentProcess"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://www.oracle.com/ValidatePayment"
+         xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/db/e2e-1201-orderprocessing/ValidatePayment/PaymentInformations"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:ns4="http://xmlns.oracle.com/pcbpel/adapter/db/top/PaymentInformations"
+         xmlns:ns3="http://www.oracle.com/soasample" xmlns:ui="http://xmlns.oracle.com/soa/designer"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:ns5="http://xmlns.oracle.com/ValidatePaymentDictionary/ValidatePaymentDictionary_DecisionService_1"
+         xmlns:ns6="http://xmlns.oracle.com/bpel" xml:id="id_1"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:ess="http://xmlns.oracle.com/scheduler"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"
+         expressionLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116" suppressJoinFailure="no"
+         exitOnStandardFault="no" xmlns:ns7="http://www.example.org/faults">
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <import namespace="http://www.oracle.com/ValidatePayment" location="../WSDLs/ValidatePayment.wsdl"
+          importType="http://schemas.xmlsoap.org/wsdl/" xml:id="id_35"/>
+  <import namespace="http://www.oracle.com/soasample" location="../Schemas/CanonicalOrder.xsd"
+          importType="http://www.w3.org/2001/XMLSchema" xml:id="id_2"/>
+  <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/PaymentInformations"
+          location="../Schemas/PaymentInformations_table.xsd" importType="http://www.w3.org/2001/XMLSchema"
+          xml:id="id_3"/>
+  <import namespace="http://www.oracle.com/ValidatePayment" location="../WSDLs/ValidatePaymentWrapper.wsdl"
+          importType="http://schemas.xmlsoap.org/wsdl/" ui:processWSDL="true" xml:id="id_4"/>
+  <partnerLinks xml:id="id_5">
+    <partnerLink name="ValidatePayment" partnerLinkType="ns1:ValidatePayment" myRole="validatePaymentPortType"
+                 xml:id="id_6"/>
+    <partnerLink name="PaymentInformations" partnerLinkType="ns2:PaymentInformations_plt"
+                 partnerRole="PaymentInformations_role" xml:id="id_7"/>
+  </partnerLinks>
+  <variables xml:id="id_36">
+    <variable name="ReceiveValidatePayment_validate_Input" messageType="ns1:validateInput" xml:id="id_9"/>
+    <variable name="ReplyValidatePayment_validate_Output" messageType="ns1:validateOutput" xml:id="id_10"/>
+    <variable name="InvokePaymentInformations_PaymentInformationsSelect_Output_Select"
+              messageType="ns2:PaymentinfoCollection_msg" xml:id="id_11"/>
+    <variable name="InvokePaymentInformations_selectByPrimaryKey_InputVariable"
+              messageType="ns2:selectByPrimaryKey_inputParameters" xml:id="id_12"/>
+    <variable name="FaultVariable" messageType="ns1:validateFault" xml:id="id_37"/>
+  </variables>
+  <sequence name="main" xml:id="id_13">
+    <receive name="ReceiveValidatePayment" createInstance="yes" partnerLink="ValidatePayment"
+             portType="ns1:validatePaymentPortType" operation="validate"
+             variable="ReceiveValidatePayment_validate_Input" xml:id="id_14"/>
+    <assign name="Assign_paymentInfoSelect" xml:id="id_15">
+      <copy xml:id="id_16">
+        <from xml:id="id_17">$ReceiveValidatePayment_validate_Input.paymentInfo/ns3:CardNum</from>
+        <to xml:id="id_18">$InvokePaymentInformations_selectByPrimaryKey_InputVariable.selectByPrimaryKey_inputParameters/ns4:cardNum</to>
+      </copy>
+    </assign>
+    <invoke name="InvokePaymentInformations" partnerLink="PaymentInformations"
+            portType="ns2:PaymentInformations_ptt" operation="selectByPrimaryKey"
+            inputVariable="InvokePaymentInformations_selectByPrimaryKey_InputVariable"
+            outputVariable="InvokePaymentInformations_PaymentInformationsSelect_Output_Select"
+            bpelx:invokeAsDetail="no" xml:id="id_19"/>
+    <if name="PaymentFound" xml:id="id_27">
+      <documentation xml:id="id_30">
+        <![CDATA[Exist]]>
+      </documentation>
+      <condition xml:id="id_29">string-length($InvokePaymentInformations_PaymentInformationsSelect_Output_Select.PaymentinfoCollection/ns4:Paymentinfo/ns4:firstName)&gt;0</condition>
+      <assign name="TransformationPaymentInfoToStatus" xml:id="id_20">
+        <bpelx:annotation xml:id="id_21">
+          <bpelx:pattern patternName="bpelx:transformation" xml:id="id_22"></bpelx:pattern>
+        </bpelx:annotation>
+        <copy xml:id="id_23">
+          <from xml:id="id_24">ora:doXSLTransformForDoc("../Transformations/validatePaymentInfo.xsl", $ReceiveValidatePayment_validate_Input.paymentInfo, "InvokePaymentInformations_PaymentInformationsSelect_Output_Select.PaymentinfoCollection", $InvokePaymentInformations_PaymentInformationsSelect_Output_Select.PaymentinfoCollection)</from>
+          <to variable="ReplyValidatePayment_validate_Output" part="status" xml:id="id_25"/>
+        </copy>
+      </assign>
+      <else xml:id="id_28">
+        <documentation xml:id="id_31">
+          <![CDATA[Invalid]]>
+        </documentation>
+        <sequence name="Sequence1" xml:id="id_33">
+          <assign name="AssignFaultInformation" xml:id="id_34">
+            <copy xml:id="id_38">
+              <from xml:id="id_39">concat("Card ", $InvokePaymentInformations_PaymentInformationsSelect_Output_Select.PaymentinfoCollection/ns4:Paymentinfo/ns4:cardNum," not found")</from>
+              <to xml:id="id_40">$FaultVariable.fault/ns7:summary</to>
+            </copy>
+            <copy xml:id="id_41">
+              <from xml:id="id_42">"VPP-0001"</from>
+              <to xml:id="id_43">$FaultVariable.fault/ns7:code</to>
+            </copy>
+            <copy xml:id="id_44">
+              <from xml:id="id_45">"Card not found in Database"</from>
+              <to xml:id="id_46">$FaultVariable.fault/ns7:details</to>
+            </copy>
+          </assign>
+          <throw name="CardNotFound" xml:id="id_32" faultName="ns1:fault" faultVariable="FaultVariable"/>
+        </sequence>
+      </else>
+    </if>
+    <reply name="ReplyValidatePayment" variable="ReplyValidatePayment_validate_Output" partnerLink="ValidatePayment"
+           portType="ns1:validatePaymentPortType" operation="validate" xml:id="id_26"/>
+  </sequence>
+</process>

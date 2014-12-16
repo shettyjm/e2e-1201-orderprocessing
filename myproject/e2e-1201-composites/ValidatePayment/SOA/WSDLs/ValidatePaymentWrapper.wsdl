@@ -1,0 +1,32 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+    
+     targetNamespace="http://www.oracle.com/ValidatePayment"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:bpws="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+     xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+     xmlns:tns="http://www.oracle.com/ValidatePayment"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/db/top/PaymentInformations"
+     xmlns:ns2="http://www.oracle.com/soasample"
+    >
+    <plnk:partnerLinkType name="ValidatePayment">
+        <plnk:role name="validatePaymentPortType" portType="tns:validatePaymentPortType"/>
+    </plnk:partnerLinkType>
+    <wsdl:import namespace="http://www.oracle.com/ValidatePayment" location="ValidatePayment.wsdl"/>
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:bpws="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+             xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:tns="http://www.oracle.com/ValidatePayment"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/db/top/PaymentInformations"
+             xmlns:ns2="http://www.oracle.com/soasample">
+            <xsd:import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/PaymentInformations"
+                 schemaLocation="../Schemas/PaymentInformations_table.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:bpws="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+             xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:tns="http://www.oracle.com/ValidatePayment"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/db/top/PaymentInformations"
+             xmlns:ns2="http://www.oracle.com/soasample">
+            <xsd:import namespace="http://www.oracle.com/soasample" schemaLocation="../Schemas/CanonicalOrder.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+</wsdl:definitions>

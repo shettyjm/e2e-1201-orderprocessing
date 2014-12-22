@@ -20,7 +20,7 @@
 		<servicebus.version>12.1.3-0-0</servicebus.version>
 		<soa.version>12.1.3-0-0</soa.version>
 		
-		<serverUrl>http://localhost:7101</serverUrl>
+		<serverUrl>localhost:7101</serverUrl>
         <user>weblogic</user>
         <password>welcome1</password>
 		

@@ -18,11 +18,6 @@
 
 	<build>
     <plugins>
-      <plugin>
-         <groupId>com.oracle.servicebus.plugin</groupId>
-		 <artifactId>oracle-servicebus-plugin</artifactId>
-        <extensions>true</extensions>
-      </plugin>
             <plugin>
                 <groupId>com.oracle.adf.plugin</groupId>
                 <artifactId>ojdeploy</artifactId>

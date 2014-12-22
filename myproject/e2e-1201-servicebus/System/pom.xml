@@ -16,33 +16,16 @@
 	
 
 	<build>
-    <plugins>
-      <plugin>
-         <groupId>com.oracle.servicebus.plugin</groupId>
-		 <artifactId>oracle-servicebus-plugin</artifactId>
-		<version>${servicebus.version}</version>
-        <extensions>true</extensions>
-      </plugin>
-    </plugins>
         <sourceDirectory></sourceDirectory>
         <resources>
             <resource>
                 <directory>${basedir}</directory>
                 <includes>
-                    <include>*</include>
-                </includes>
-            </resource>
-            <resource>
-                <directory>${basedir}</directory>
-                <includes>
-                    <include>*</include>
-                </includes>
-            </resource>
-            <resource>
-                <directory>${basedir}</directory>
-                <includes>
                     <include>**</include>
                 </includes>
+				<excludes>
+					<exclude>target</exclude>
+				</excludes>
             </resource>
         </resources>
         <outputDirectory>.data/maven/classes/</outputDirectory>

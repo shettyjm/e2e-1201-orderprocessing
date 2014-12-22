@@ -18,4 +18,21 @@
         <module>ValidatePayment</module>
     </modules>
 
+	<build>
+		<plugins>
+		<plugin>
+         <groupId>com.oracle.servicebus.plugin</groupId>
+		 <artifactId>oracle-servicebus-plugin</artifactId>
+        <extensions>true</extensions>
+		<configuration>
+			<oracleServerUrl>t3://${serverUrl}</oracleServerUrl>
+			<oracleUsername>${user}</oracleUsername>
+			<oraclePassword>${password}</oraclePassword>
+			<excludes>
+				<exclude>target</exclude>
+			</excludes>
+		</configuration>
+      </plugin>
+		</plugins>
+	</build>
 </project>

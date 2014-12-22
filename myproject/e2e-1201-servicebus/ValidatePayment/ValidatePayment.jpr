@@ -67,7 +67,23 @@
       <string v="oracle.tip.tools.ide.ess.addin.ESSContentSetProvider/ess-content"/>
       <string v="oracle.jdeveloper.model.PathsConfiguration/cepContentSet"/>
    </list>
-   <value n="defaultPackage" v="e2e1201composit"/>
+   <value n="defaultPackage" v="validatepayment"/>
+   <hash n="oracle.adfdtinternal.model.ide.settings.ADFMSettings">
+      <hash n="adfmContentSet">
+         <list n="pattern-filters"/>
+         <list n="url-path">
+            <url path=".data/contentsets/adfmsrc/"/>
+         </list>
+      </hash>
+   </hash>
+   <hash n="oracle.bm.commonIde.data.project.ModelerProjectSettings">
+      <hash n="modelersContentSet">
+         <list n="pattern-filters"/>
+         <list n="url-path">
+            <url path=".data/contentsets/model/"/>
+         </list>
+      </hash>
+   </hash>
    <hash n="oracle.ide.model.ResourcePaths">
       <hash n="resourcesContentSet">
          <list n="constituent-sets">
@@ -97,33 +113,82 @@
             </hash>
          </list>
          <list n="pattern-filters">
-            <string v="+*"/>
+            <string v="+filename"/>
          </list>
-         <list n="url-path"/>
+         <list n="url-path">
+            <url path="."/>
+         </list>
       </hash>
    </hash>
    <hash n="oracle.ide.model.TechnologyScopeConfiguration">
       <list n="technologyScope">
          <string v="Maven"/>
+         <string v="ServiceBusTechnology"/>
+         <string v="WSDL"/>
+         <string v="WSPolicy"/>
          <string v="XML"/>
+         <string v="XML_SCHEMA"/>
       </list>
    </hash>
    <hash n="oracle.jdeveloper.compiler.OjcConfiguration">
       <value n="internalEncoding" v="Cp1252"/>
       <value n="webIANAEncoding" v="windows-1252"/>
    </hash>
+   <hash n="oracle.jdeveloper.deploy.dt.DeploymentProfiles">
+      <hash n="profileDefinitions">
+         <hash n="LocalProfile">
+            <value n="profileClass" v="SbProjectDeployProfile"/>
+            <value n="profileName" v="LocalProfile"/>
+         </hash>
+      </hash>
+      <list n="profileList">
+         <string v="LocalProfile"/>
+      </list>
+   </hash>
    <hash n="oracle.jdeveloper.maven.compiler.MavenConfiguration">
       <url n="pomfileURL" path="pom.xml"/>
    </hash>
    <hash n="oracle.jdeveloper.model.J2eeSettings">
-      <value n="j2eeWebAppName" v="e2e-1201-orderprocessing-e2e-1201-composites-webapp"/>
-      <value n="j2eeWebContextRoot" v="e2e-1201-orderprocessing-e2e-1201-composites-context-root"/>
+      <value n="j2eeWebAppName" v="myproject-ValidatePayment-webapp"/>
+      <value n="j2eeWebContextRoot" v="myproject-ValidatePayment-context-root"/>
+      <hash n="webContentSet">
+         <list n="pattern-filters"/>
+         <list n="url-path">
+            <url path=".data/contentsets/public_html/"/>
+         </list>
+      </hash>
    </hash>
    <hash n="oracle.jdeveloper.model.PathsConfiguration">
+      <hash n="cepContentSet">
+         <list n="url-path">
+            <url path=".data/contentsets/META-INF/"/>
+         </list>
+      </hash>
       <hash n="javaContentSet">
          <list n="url-path">
             <url path="src/main/java/"/>
          </list>
+      </hash>
+   </hash>
+   <hash n="oracle.jdeveloper.offlinedb.model.OfflineDBProjectSettings">
+      <hash n="offlineDBContentSet">
+         <list n="pattern-filters"/>
+         <list n="url-path">
+            <url path=".data/contentsets/database/"/>
+         </list>
+      </hash>
+   </hash>
+   <hash n="oracle.jdeveloper.runner.RunConfigurations">
+      <hash n="runConfigurationDefinitions">
+         <hash n="Default">
+            <value n="custom" v="false"/>
+            <value n="name" v="Default"/>
+            <hash n="oracle.jdevimpl.runner.debug.DebugConfiguration">
+               <value n="promptForRemoteDebugging" v="false"/>
+               <value n="remoteProtocol" v="OSB"/>
+            </hash>
+            <url n="targetURL" path="servicebus.sboverview"/>
+         </hash>
       </hash>
    </hash>
    <hash n="oracle.jdevimpl.config.JProjectLibraries">
@@ -155,5 +220,40 @@
    </hash>
    <hash n="oracle.jdevimpl.config.JProjectPaths">
       <url n="outputDirectory" path="target/classes/"/>
+   </hash>
+   <hash n="oracle.mds.internal.dt.ide.MDSLibraryCustCSProvider">
+      <hash n="mdsContentSet">
+         <list n="pattern-filters"/>
+         <list n="url-path">
+            <url path=".data/contentsets/libraryCustomizations/"/>
+         </list>
+      </hash>
+   </hash>
+   <hash n="oracle.sb.tooling.ide.core.projects.SbProjectSettings">
+      <hash n="sbContentSet">
+         <list n="pattern-filters">
+            <string v="-.data"/>
+            <string v="-.settings"/>
+            <string v="+**"/>
+         </list>
+         <list n="url-path">
+            <url path="."/>
+         </list>
+      </hash>
+   </hash>
+   <hash n="oracle.toplink.workbench.addin">
+      <hash n="persistence-list">
+         <value n="jpa-version" v="2.0"/>
+         <value n="metamodel-generation-directory" v=""/>
+      </hash>
+      <hash n="toplinkContentSet">
+         <list n="pattern-filters"/>
+         <list n="url-path">
+            <url path=".data/contentsets/toplink/"/>
+         </list>
+      </hash>
+   </hash>
+   <hash n="ResourceBundleOptions">
+      <list n="RegisteredResourceBundles"/>
    </hash>
 </jpr:project>

@@ -3,16 +3,15 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>fr.sodifrance.anteo.e2e-1201</groupId>
+	<groupId>oracle.tutorial.e2e-1201</groupId>
 	<version>1.0-SNAPSHOT</version>
 	<artifactId>parent</artifactId>
 
 	<packaging>pom</packaging>
-
+ 
 	<modules>
 		<module>e2e-1201-composites</module>
-    	<module>Project1</module>
-    	<module>ValidatePayment</module>
+    	<module>e2e-1201-servicebus</module>
     </modules>
 
 	<properties>

@@ -15,6 +15,7 @@
     
 	<modules>
     	<module>ValidatePayment</module>
+		<module>ProcessOrder</module>
     </modules>
 	
     <properties>

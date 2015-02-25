@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="ValidatePayment-SB" resourceRoot="${projectDir}" soapui-version="5.0.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="validatePaymentBinding" type="wsdl" bindingName="{http://www.oracle.com/ValidatePayment}validatePaymentBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:7101/e2e-1201-servicebus/ValidatePayment?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:7101/e2e-1201-servicebus/ValidatePayment?wsdl"><con:part><con:url>http://localhost:7101/e2e-1201-servicebus/ValidatePayment?wsdl</con:url><con:content><![CDATA[<WL5G3N0:definitions targetNamespace="http://www.oracle.com/ValidatePayment" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://www.oracle.com/soasample" xmlns:WL5G3N2="http://www.oracle.com/ValidatePayment" xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/">
+  <WL5G3N0:types>
+    <xsd:schema xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.oracle.com/ValidatePayment" xmlns:types="http://www.oracle.com/soasample" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://www.oracle.com/soasample"/>
+      <xsd:import namespace="http://www.oracle.com/soasample" schemaLocation="http://localhost:7101/e2e-1201-servicebus/ValidatePayment?SCHEMA%2FValidatePayment%2FSchemas%2FCanonicalOrder"/>
+    </xsd:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="validateInput">
+    <WL5G3N0:part element="WL5G3N1:PaymentInfo" name="paymentInfo"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="validateOutput">
+    <WL5G3N0:part element="WL5G3N1:PaymentStatus" name="status"/>
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="validatePaymentPortType">
+    <WL5G3N0:operation name="validate">
+      <WL5G3N0:input message="WL5G3N2:validateInput"/>
+      <WL5G3N0:output message="WL5G3N2:validateOutput"/>
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+  <WL5G3N0:binding name="validatePaymentBinding" type="WL5G3N2:validatePaymentPortType">
+    <WL5G3N3:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <WL5G3N0:operation name="validate">
+      <WL5G3N3:operation soapAction="validate" style="document"/>
+      <WL5G3N0:input>
+        <WL5G3N3:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N3:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:service name="validatePaymentBindingQSService">
+    <WL5G3N0:documentation>OSB Service</WL5G3N0:documentation>
+    <WL5G3N0:port binding="WL5G3N2:validatePaymentBinding" name="validatePaymentBindingQSPort">
+      <WL5G3N3:address location="http://localhost:7101/e2e-1201-servicebus/ValidatePayment"/>
+    </WL5G3N0:port>
+  </WL5G3N0:service>
+</WL5G3N0:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:7101/e2e-1201-servicebus/ValidatePayment?SCHEMA%2FValidatePayment%2FSchemas%2FCanonicalOrder</con:url><con:content><![CDATA[<xs:schema targetNamespace="http://www.oracle.com/soasample" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.oracle.com/soasample">
+  <!--e2e-1201-orderprocessing data types 
+	  
+	  Last update:  4/18 version 1.2-->
+  <xs:element name="Order" type="OrderType">
+    <xs:annotation>
+      <xs:documentation>The canonical order element</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="OrderAck" type="OrderAckType">
+    <xs:annotation>
+      <xs:documentation>The canonical order ack element</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PaymentInfo" type="PaymentType">
+    <xs:annotation>
+      <xs:documentation>The canonical order element</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PaymentStatus" type="PaymentStatusType">
+    <xs:annotation>
+      <xs:documentation>The canonical order element</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="Shipping" type="ShippingType">
+    <xs:annotation>
+      <xs:documentation>The canonical order element</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="InventoryQuery" type="InventoryQueryType">
+    <xs:annotation>
+      <xs:documentation>The inventory element</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="InventoryResponse" type="InventoryType">
+    <xs:annotation>
+      <xs:documentation>The inventory element</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="TotalOrderAmount" type="MoneyType">
+    <xs:annotation>
+      <xs:documentation>The total order amount element</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:simpleType name="MoneyType">
+    <xs:restriction base="xs:double"/>
+  </xs:simpleType>
+  <xs:simpleType name="OrderNumberType">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="25"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NameType">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="50"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="AddressType">
+    <xs:sequence>
+      <xs:element name="FirstName" type="NameType"/>
+      <xs:element name="LastName" type="NameType" minOccurs="1"/>
+      <xs:sequence minOccurs="1" maxOccurs="3">
+        <xs:element name="AddressLine">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="180"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+      </xs:sequence>
+      <xs:element name="City">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="25"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="State">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ZipCode">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="10"/>
+            <xs:minLength value="5"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="PhoneNumber" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="11"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ItemType">
+    <xs:annotation>
+      <xs:documentation>This information will be populated from INVDTA/ITMMSTP from bronze where product_id = isku</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="SKU">
+        <xs:annotation>
+          <xs:documentation>Column ISKU</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:length value="5"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Quantity" type="xs:int"/>
+      <xs:element name="UnitPrice" type="MoneyType"/>
+      <xs:element name="Brand" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Column BRAND</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Model" nillable="true">
+        <xs:annotation>
+          <xs:documentation>Column MODEL</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Category" nillable="true">
+        <xs:annotation>
+          <xs:documentation>Column CATEG</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:int">
+            <xs:totalDigits value="4"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Description" nillable="true">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ShippingSpeedType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Standard"/>
+      <xs:enumeration value="Twoday"/>
+      <xs:enumeration value="Oneday"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ShippingProviderType">
+    <xs:annotation>
+      <xs:documentation>ShippingProviderType for now only contains the name of the Provider - we may expand later</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name" nillable="true">
+        <xs:annotation>
+          <xs:documentation>Name of the shipping provider for packing service - FedEx ups, us postal</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OrderType">
+    <xs:sequence>
+      <xs:element name="OrderNumber" type="OrderNumberType" minOccurs="0"/>
+      <xs:element name="SessionID" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="OrderDate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="Billing" type="PaymentType" minOccurs="1"/>
+      <xs:element name="Shipping" type="ShippingType" minOccurs="1"/>
+      <xs:element name="Email" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Items">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Item" type="ItemType" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Status" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PaymentType">
+    <xs:sequence>
+      <xs:element name="CardPaymentType">
+        <xs:simpleType>
+          <xs:restriction base="xs:int">
+            <xs:pattern value="[0-5]"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="CardNum">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:length value="16"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ExpireDate">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:length value="4"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="CardName">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="BillingAddress" type="AddressType"/>
+      <xs:element name="AuthorizationDate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="AuthorizationAmount" type="MoneyType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ShippingMethodType">
+    <xs:restriction base="xs:int">
+      <xs:pattern value="[1-3]{1}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ShippingType">
+    <xs:sequence>
+      <xs:element name="OrderNumber" type="OrderNumberType" minOccurs="0"/>
+      <xs:element name="Address" type="AddressType"/>
+      <xs:element name="ShippingSpeed" type="ShippingSpeedType" minOccurs="0"/>
+      <xs:element name="ShippingProvider" type="ShippingProviderType" minOccurs="0"/>
+      <xs:element name="ShipMethod" type="ShippingMethodType" minOccurs="0"/>
+      <xs:element name="Status" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OrderAckType">
+    <xs:sequence>
+      <xs:element name="OrderNumber" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PaymentStatusType">
+    <xs:sequence>
+      <xs:element name="Status" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InventoryQueryType">
+    <xs:sequence>
+      <xs:element name="Category" nillable="true">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:int">
+            <xs:totalDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InventoryType">
+    <xs:sequence maxOccurs="unbounded">
+      <xs:element name="SKU">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:length value="6"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="TotalQuantity" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:7101/e2e-1201-servicebus/ValidatePayment</con:endpoint></con:endpoints><con:operation isOneWay="false" action="validate" name="validate" bindingOperationName="validate" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Valid"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:7101/e2e-1201-servicebus/ValidatePayment</con:endpoint><con:request><![CDATA[<soapenv:Envelope 
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:ns1="http://www.oracle.com/soasample">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ns1:PaymentInfo xmlns:ns1="http://www.oracle.com/soasample">
+            <ns1:CardPaymentType>0</ns1:CardPaymentType>
+            <ns1:CardNum>0123456789</ns1:CardNum>
+            <ns1:ExpireDate>2015-01-01T23:03:20.000+01:00</ns1:ExpireDate>
+            <ns1:CardName>AMEX</ns1:CardName>
+            <ns1:BillingAddress>
+              <ns1:FirstName>Daniel</ns1:FirstName>
+              <ns1:LastName>Day-Lewis</ns1:LastName>
+              <ns1:AddressLine>555 Beverly Lane</ns1:AddressLine>
+              <ns1:City>Hollywood</ns1:City>
+              <ns1:State>CA</ns1:State>
+              <ns1:ZipCode>12345</ns1:ZipCode>
+              <ns1:PhoneNumber>5127691108</ns1:PhoneNumber>
+            </ns1:BillingAddress>
+            <ns1:AuthorizationAmount>100</ns1:AuthorizationAmount>
+          </ns1:PaymentInfo> 
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="validate"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite name="TestSuite 1"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase Valid" searchProperties="true"><con:settings/><con:testStep type="request" name="validate - Valid"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>validatePaymentBinding</con:interface><con:operation>validate</con:operation><con:request name="validate - Valid" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:7101/e2e-1201-servicebus/ValidatePayment</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:ns1="http://www.oracle.com/soasample">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ns1:PaymentInfo xmlns:ns1="http://www.oracle.com/soasample">
+            <ns1:CardPaymentType>0</ns1:CardPaymentType>
+            <ns1:CardNum>0123456789</ns1:CardNum>
+            <ns1:ExpireDate>2015-01-01T23:03:20.000+01:00</ns1:ExpireDate>
+            <ns1:CardName>AMEX</ns1:CardName>
+            <ns1:BillingAddress>
+              <ns1:FirstName>Daniel</ns1:FirstName>
+              <ns1:LastName>Day-Lewis</ns1:LastName>
+              <ns1:AddressLine>555 Beverly Lane</ns1:AddressLine>
+              <ns1:City>Hollywood</ns1:City>
+              <ns1:State>CA</ns1:State>
+              <ns1:ZipCode>12345</ns1:ZipCode>
+              <ns1:PhoneNumber>5127691108</ns1:PhoneNumber>
+            </ns1:BillingAddress>
+            <ns1:AuthorizationAmount>100</ns1:AuthorizationAmount>
+          </ns1:PaymentInfo> 
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response"/><con:assertion type="Schema Compliance" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="XQuery Match" name="XQuery Status"><con:configuration><path>declare namespace bpws='http://docs.oasis-open.org/wsbpel/2.0/process/executable';
+declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace instra='http://xmlns.oracle.com/sca/tracking/1.0';
+declare namespace tns='http://www.oracle.com/ValidatePayment';
+declare namespace f='http://www.example.org/faults';
+declare namespace ns1='http://www.oracle.com/soasample';
+declare namespace plnk='http://docs.oasis-open.org/wsbpel/2.0/plnktype';
+declare namespace soap='http://schemas.xmlsoap.org/wsdl/soap/';
+declare namespace wsdl='http://schemas.xmlsoap.org/wsdl/';
+declare namespace ns0='http://www.oracle.com/soasample';
+declare namespace wsa='http://www.w3.org/2005/08/addressing';
+
+
+//ns0:Status/text()</path><content>&lt;xml-fragment>Valid&lt;/xml-fragment></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XPath Match" name="XPath Status"><con:configuration><path>declare namespace bpws='http://docs.oasis-open.org/wsbpel/2.0/process/executable';
+declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace instra='http://xmlns.oracle.com/sca/tracking/1.0';
+declare namespace tns='http://www.oracle.com/ValidatePayment';
+declare namespace f='http://www.example.org/faults';
+declare namespace ns1='http://www.oracle.com/soasample';
+declare namespace plnk='http://docs.oasis-open.org/wsbpel/2.0/plnktype';
+declare namespace soap='http://schemas.xmlsoap.org/wsdl/soap/';
+declare namespace wsdl='http://schemas.xmlsoap.org/wsdl/';
+declare namespace ns0='http://www.oracle.com/soasample';
+declare namespace wsa='http://www.w3.org/2005/08/addressing';
+
+//ns0:Status</path><content>Valid</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="validate"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase Invalid" searchProperties="true"><con:settings/><con:testStep type="request" name="validate - NotAuthorized"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>validatePaymentBinding</con:interface><con:operation>validate</con:operation><con:request name="validate - NotAuthorized" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:7101/e2e-1201-servicebus/ValidatePayment</con:endpoint><con:request><![CDATA[<soapenv:Envelope 
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:ns1="http://www.oracle.com/soasample">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ns1:PaymentInfo xmlns:ns1="http://www.oracle.com/soasample">
+            <ns1:CardPaymentType>0</ns1:CardPaymentType>
+            <ns1:CardNum>0123456789</ns1:CardNum>
+            <ns1:ExpireDate>2015-01-01T23:03:20.000+01:00</ns1:ExpireDate>
+            <ns1:CardName>AMEX</ns1:CardName>
+            <ns1:BillingAddress>
+              <ns1:FirstName>Daniel</ns1:FirstName>
+              <ns1:LastName>Day-Lewis</ns1:LastName>
+              <ns1:AddressLine>555 Beverly Lane</ns1:AddressLine>
+              <ns1:City>Hollywood</ns1:City>
+              <ns1:State>CA</ns1:State>
+              <ns1:ZipCode>12345</ns1:ZipCode>
+              <ns1:PhoneNumber>5127691108</ns1:PhoneNumber>
+            </ns1:BillingAddress>
+            <ns1:AuthorizationAmount>4500</ns1:AuthorizationAmount>
+          </ns1:PaymentInfo>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response"/><con:assertion type="Schema Compliance" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>declare namespace bpws='http://docs.oasis-open.org/wsbpel/2.0/process/executable';
+declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace instra='http://xmlns.oracle.com/sca/tracking/1.0';
+declare namespace tns='http://www.oracle.com/ValidatePayment';
+declare namespace f='http://www.example.org/faults';
+declare namespace ns1='http://www.oracle.com/soasample';
+declare namespace plnk='http://docs.oasis-open.org/wsbpel/2.0/plnktype';
+declare namespace soap='http://schemas.xmlsoap.org/wsdl/soap/';
+declare namespace wsdl='http://schemas.xmlsoap.org/wsdl/';
+declare namespace ns0='http://www.oracle.com/soasample';
+declare namespace wsa='http://www.w3.org/2005/08/addressing';
+
+//ns0:Status</path><content>Authorization for amount not provided, max 2500.0</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="validate"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="validate - DateNotCorresponding"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>validatePaymentBinding</con:interface><con:operation>validate</con:operation><con:request name="validate - DateNotCorresponding" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:7101/e2e-1201-servicebus/ValidatePayment</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soas="http://www.oracle.com/soasample">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ns1:PaymentInfo xmlns:ns1="http://www.oracle.com/soasample">
+            <ns1:CardPaymentType>0</ns1:CardPaymentType>
+            <ns1:CardNum>0123456789</ns1:CardNum>
+            <ns1:ExpireDate>2015-01-02T23:03:20.000+01:00</ns1:ExpireDate>
+            <ns1:CardName>AMEX</ns1:CardName>
+            <ns1:BillingAddress>
+              <ns1:FirstName>Daniel</ns1:FirstName>
+              <ns1:LastName>Day-Lewis</ns1:LastName>
+              <ns1:AddressLine>555 Beverly Lane</ns1:AddressLine>
+              <ns1:City>Hollywood</ns1:City>
+              <ns1:State>CA</ns1:State>
+              <ns1:ZipCode>12345</ns1:ZipCode>
+              <ns1:PhoneNumber>5127691108</ns1:PhoneNumber>
+            </ns1:BillingAddress>
+            <ns1:AuthorizationAmount>100</ns1:AuthorizationAmount>
+          </ns1:PaymentInfo>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response"/><con:assertion type="Schema Compliance" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>declare namespace bpws='http://docs.oasis-open.org/wsbpel/2.0/process/executable';
+declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace instra='http://xmlns.oracle.com/sca/tracking/1.0';
+declare namespace tns='http://www.oracle.com/ValidatePayment';
+declare namespace f='http://www.example.org/faults';
+declare namespace ns1='http://www.oracle.com/soasample';
+declare namespace plnk='http://docs.oasis-open.org/wsbpel/2.0/plnktype';
+declare namespace soap='http://schemas.xmlsoap.org/wsdl/soap/';
+declare namespace wsdl='http://schemas.xmlsoap.org/wsdl/';
+declare namespace ns0='http://www.oracle.com/soasample';
+declare namespace wsa='http://www.w3.org/2005/08/addressing';
+
+//ns0:Status</path><content>Exipration date not corresponding
+                                     (2015-01-01T23:03:20.000+01:00)</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="validate"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>

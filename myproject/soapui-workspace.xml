@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-workspace name="e2e-1201-orderprocessing" soapui-version="5.0.0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+  <con:project name="ProcessOrder">D:/Users/Emmanuel/Documents/GitHub/e2e-1201-orderprocessing/myproject/e2e-1201-composites/ProcessOrder/soapui-project.xml</con:project>
+  <con:project name="ValidatePayment">D:/Users/Emmanuel/Documents/GitHub/e2e-1201-orderprocessing/myproject/e2e-1201-composites/ValidatePayment/soapui-project.xml</con:project>
+  <con:project name="ValidatePayment-SB">D:/Users/Emmanuel/Documents/GitHub/e2e-1201-orderprocessing/myproject/e2e-1201-servicebus/ValidatePayment/soapui-project.xml</con:project>
+</con:soapui-workspace>

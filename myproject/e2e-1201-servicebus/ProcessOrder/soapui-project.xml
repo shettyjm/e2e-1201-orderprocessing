@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="ProcessOrderSB" resourceRoot="${projectDir}" soapui-version="5.0.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="processOrderBinding" type="wsdl" bindingName="{http://www.oracle.com/ProcessOrder}processOrderBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:7004/e2e-1201-servicebus/ProcessOrder?WSDL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:7004/e2e-1201-servicebus/ProcessOrder?WSDL"><con:part><con:url>http://localhost:7004/e2e-1201-servicebus/ProcessOrder?WSDL</con:url><con:content><![CDATA[<WL5G3N0:definitions targetNamespace="http://www.oracle.com/ProcessOrder" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:WL5G3N2="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:WL5G3N3="http://www.oracle.com/ProcessOrder" xmlns:WL5G3N4="http://schemas.xmlsoap.org/wsdl/soap/">
+  <WL5G3N0:import location="http://localhost:7004/e2e-1201-servicebus/ProcessOrder?WSDL%2FProcessOrder%2FWSDLs%2FProcessOrderWrapper" namespace="http://www.oracle.com/ProcessOrder"/>
+  <WL5G3N1:Policy WL5G3N2:Id="processOrderBinding_WSAT_policy">
+    <WL5G3N1:ExactlyOne>
+      <WL5G3N1:All>
+        <wsat:ATAssertion wsp:Optional="true" xmlns:wsat="http://schemas.xmlsoap.org/ws/2004/10/wsat" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"/>
+      </WL5G3N1:All>
+      <WL5G3N1:All>
+        <wsat12:ATAssertion wsp:Optional="true" xmlns:wsat12="http://docs.oasis-open.org/ws-tx/wsat/2006/06" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"/>
+      </WL5G3N1:All>
+      <WL5G3N1:All>
+        <wsat12:ATAssertion wsp:Optional="true" xmlns:wsat12="http://docs.oasis-open.org/ws-tx/wsat/2006/06" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"/>
+      </WL5G3N1:All>
+    </WL5G3N1:ExactlyOne>
+  </WL5G3N1:Policy>
+  <plnk:partnerLinkType name="receiveOrder" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+    <plnk:role name="processOrderPortType" portType="tns:processOrderPortType"/>
+  </plnk:partnerLinkType>
+  <WL5G3N0:binding name="processOrderBinding" type="WL5G3N3:processOrderPortType">
+    <WL5G3N4:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <WL5G3N0:operation name="process">
+      <WL5G3N1:Policy>
+        <WL5G3N1:PolicyReference URI="#processOrderBinding_WSAT_policy"/>
+      </WL5G3N1:Policy>
+      <WL5G3N4:operation soapAction="process" style="document"/>
+      <WL5G3N0:input>
+        <WL5G3N4:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N4:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:service name="processOrderBindingQSService">
+    <WL5G3N0:documentation>OSB Service</WL5G3N0:documentation>
+    <WL5G3N0:port binding="WL5G3N3:processOrderBinding" name="processOrderBindingQSPort">
+      <WL5G3N4:address location="http://localhost:7004/e2e-1201-servicebus/ProcessOrder"/>
+    </WL5G3N0:port>
+  </WL5G3N0:service>
+</WL5G3N0:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:7004/e2e-1201-servicebus/ProcessOrder?WSDL%2FProcessOrder%2FWSDLs%2FProcessOrderWrapper</con:url><con:content><![CDATA[<WL5G3N0:definitions targetNamespace="http://www.oracle.com/ProcessOrder" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://www.oracle.com/soasample" xmlns:WL5G3N2="http://www.oracle.com/ProcessOrder">
+  <WL5G3N0:types>
+    <xsd:schema xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.oracle.com/ProcessOrder" xmlns:types="http://www.oracle.com/soasample" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://www.oracle.com/soasample" schemaLocation="http://localhost:7004/e2e-1201-servicebus/ProcessOrder?SCHEMA%2FProcessOrder%2FSchemas%2FXMLSchema_-105821922"/>
+    </xsd:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="orderInput">
+    <WL5G3N0:part element="WL5G3N1:Order" name="order"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="orderOutput">
+    <WL5G3N0:part element="WL5G3N1:OrderAck" name="ack"/>
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="processOrderPortType">
+    <WL5G3N0:operation name="process">
+      <WL5G3N0:input message="WL5G3N2:orderInput"/>
+      <WL5G3N0:output message="WL5G3N2:orderOutput"/>
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+</WL5G3N0:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:7004/e2e-1201-servicebus/ProcessOrder?SCHEMA%2FProcessOrder%2FSchemas%2FXMLSchema_-105821922</con:url><con:content><![CDATA[<xs:schema targetNamespace="http://www.oracle.com/soasample" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.oracle.com/soasample">
+  <xs:element name="Order" type="OrderType">
+    <xs:annotation>
+      <xs:documentation>The canonical order element</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="OrderAck" type="OrderAckType">
+    <xs:annotation>
+      <xs:documentation>The canonical order ack element</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PaymentInfo" type="PaymentType">
+    <xs:annotation>
+      <xs:documentation>The canonical order element</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PaymentStatus" type="PaymentStatusType">
+    <xs:annotation>
+      <xs:documentation>The canonical order element</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="Shipping" type="ShippingType">
+    <xs:annotation>
+      <xs:documentation>The canonical order element</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="InventoryQuery" type="InventoryQueryType">
+    <xs:annotation>
+      <xs:documentation>The inventory element</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="InventoryResponse" type="InventoryType">
+    <xs:annotation>
+      <xs:documentation>The inventory element</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="TotalOrderAmount" type="MoneyType">
+    <xs:annotation>
+      <xs:documentation>The total order amount element</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:simpleType name="MoneyType">
+    <xs:restriction base="xs:double"/>
+  </xs:simpleType>
+  <xs:simpleType name="OrderNumberType">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="25"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NameType">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="50"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="AddressType">
+    <xs:sequence>
+      <xs:element name="FirstName" type="NameType"/>
+      <xs:element name="LastName" type="NameType" minOccurs="1"/>
+      <xs:sequence minOccurs="1" maxOccurs="3">
+        <xs:element name="AddressLine">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="180"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+      </xs:sequence>
+      <xs:element name="City">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="25"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="State">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ZipCode">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="10"/>
+            <xs:minLength value="5"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="PhoneNumber" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="11"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ItemType">
+    <xs:annotation>
+      <xs:documentation>This information will be populated from INVDTA/ITMMSTP from bronze where product_id = isku</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="SKU">
+        <xs:annotation>
+          <xs:documentation>Column ISKU</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:length value="5"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Quantity" type="xs:int"/>
+      <xs:element name="UnitPrice" type="MoneyType"/>
+      <xs:element name="Brand" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Column BRAND</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Model" nillable="true">
+        <xs:annotation>
+          <xs:documentation>Column MODEL</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Category" nillable="true">
+        <xs:annotation>
+          <xs:documentation>Column CATEG</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:int">
+            <xs:totalDigits value="4"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Description" nillable="true">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ShippingSpeedType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Standard"/>
+      <xs:enumeration value="Twoday"/>
+      <xs:enumeration value="Oneday"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ShippingProviderType">
+    <xs:annotation>
+      <xs:documentation>ShippingProviderType for now only contains the name of the Provider - we may expand later</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name" nillable="true">
+        <xs:annotation>
+          <xs:documentation>Name of the shipping provider for packing service - FedEx ups, us postal</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OrderType">
+    <xs:sequence>
+      <xs:element name="OrderNumber" type="OrderNumberType" minOccurs="0"/>
+      <xs:element name="SessionID" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="OrderDate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="Billing" type="PaymentType" minOccurs="1"/>
+      <xs:element name="Shipping" type="ShippingType" minOccurs="1"/>
+      <xs:element name="Email" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Items">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Item" type="ItemType" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Status" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PaymentType">
+    <xs:sequence>
+      <xs:element name="CardPaymentType">
+        <xs:simpleType>
+          <xs:restriction base="xs:int">
+            <xs:pattern value="[0-5]"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="CardNum">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:length value="16"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ExpireDate">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:length value="4"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="CardName">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="BillingAddress" type="AddressType"/>
+      <xs:element name="AuthorizationDate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="AuthorizationAmount" type="MoneyType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ShippingMethodType">
+    <xs:restriction base="xs:int">
+      <xs:pattern value="[1-3]{1}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ShippingType">
+    <xs:sequence>
+      <xs:element name="OrderNumber" type="OrderNumberType" minOccurs="0"/>
+      <xs:element name="Address" type="AddressType"/>
+      <xs:element name="ShippingSpeed" type="ShippingSpeedType" minOccurs="0"/>
+      <xs:element name="ShippingProvider" type="ShippingProviderType" minOccurs="0"/>
+      <xs:element name="ShipMethod" type="ShippingMethodType" minOccurs="0"/>
+      <xs:element name="Status" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OrderAckType">
+    <xs:sequence>
+      <xs:element name="OrderNumber" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PaymentStatusType">
+    <xs:sequence>
+      <xs:element name="Status" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InventoryQueryType">
+    <xs:sequence>
+      <xs:element name="Category" nillable="true">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:int">
+            <xs:totalDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InventoryType">
+    <xs:sequence maxOccurs="unbounded">
+      <xs:element name="SKU">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:length value="6"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="TotalQuantity" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:7004/e2e-1201-servicebus/ProcessOrder</con:endpoint></con:endpoints><con:operation isOneWay="false" action="process" name="process" bindingOperationName="process" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:7004/e2e-1201-servicebus/ProcessOrder</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soas="http://www.oracle.com/soasample">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <soas:Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         <soas:Billing>
+            <soas:CardPaymentType>1</soas:CardPaymentType>
+            <soas:CardNum>1234123412341234</soas:CardNum>
+            <soas:ExpireDate>0316</soas:ExpireDate>
+            <soas:CardName>AMEX</soas:CardName>
+            <soas:BillingAddress>
+               <soas:FirstName>Daniel</soas:FirstName>
+               <soas:LastName>Day-Lewis</soas:LastName>
+               <soas:AddressLine>555 Beverly Lane</soas:AddressLine>
+               <soas:City>Hollywood</soas:City>
+               <soas:State>CA</soas:State>
+               <soas:ZipCode>12345</soas:ZipCode>
+               <soas:PhoneNumber>5127691108</soas:PhoneNumber>
+            </soas:BillingAddress>
+         </soas:Billing>
+         <soas:Shipping>
+            <soas:Address>
+               <soas:FirstName>Daniel</soas:FirstName>
+               <soas:LastName>Day-Lewis</soas:LastName>
+               <soas:AddressLine>555 Beverly Lane</soas:AddressLine>
+               <soas:City>Hollywood</soas:City>
+               <soas:State>CA</soas:State>
+               <soas:ZipCode>12345</soas:ZipCode>
+               <soas:PhoneNumber>5127691108</soas:PhoneNumber>
+            </soas:Address>
+            <soas:ShippingSpeed>Standard</soas:ShippingSpeed>
+         </soas:Shipping>
+         <soas:Email>daniel@localhost</soas:Email>
+         <soas:Items>
+            <soas:Item>
+               <soas:SKU>32779</soas:SKU>
+               <soas:Quantity>5</soas:Quantity>
+               <soas:UnitPrice>4.72</soas:UnitPrice>
+               <soas:Brand>Slaker</soas:Brand>
+               <soas:Model>Water bottle</soas:Model>
+               <soas:Category>2008</soas:Category>
+               <soas:Description>Slaker Water Bottle</soas:Description>
+            </soas:Item>
+            <soas:Item>
+               <soas:SKU>30421</soas:SKU>
+               <soas:Quantity>2</soas:Quantity>
+               <soas:UnitPrice>10.72</soas:UnitPrice>
+               <soas:Brand>Grand Prix</soas:Brand>
+               <soas:Model>Bicycle Tires</soas:Model>
+               <soas:Category>2005</soas:Category>
+               <soas:Description>Grand Prix Bicycle Tires</soas:Description>
+            </soas:Item>
+            <soas:Item>
+               <soas:SKU>32861</soas:SKU>
+               <soas:Quantity>1</soas:Quantity>
+               <soas:UnitPrice>60.72</soas:UnitPrice>
+               <soas:Brand>Safe-T</soas:Brand>
+               <soas:Model>Bicycle helmet</soas:Model>
+               <soas:Category>1829</soas:Category>
+               <soas:Description>Safe-T Helmet</soas:Description>
+            </soas:Item>
+         </soas:Items>
+      </soas:Order>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="process"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite name="processOrderBinding TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="process TestCase" searchProperties="true"><con:settings/><con:testStep type="request" name="process"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>processOrderBinding</con:interface><con:operation>process</con:operation><con:request name="process"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:7004/e2e-1201-servicebus/ProcessOrder</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soas="http://www.oracle.com/soasample">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <soas:Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         <soas:Billing>
+            <soas:CardPaymentType>1</soas:CardPaymentType>
+            <soas:CardNum>1234123412341234</soas:CardNum>
+            <soas:ExpireDate>0316</soas:ExpireDate>
+            <soas:CardName>AMEX</soas:CardName>
+            <soas:BillingAddress>
+               <soas:FirstName>Daniel</soas:FirstName>
+               <soas:LastName>Day-Lewis</soas:LastName>
+               <soas:AddressLine>555 Beverly Lane</soas:AddressLine>
+               <soas:City>Hollywood</soas:City>
+               <soas:State>CA</soas:State>
+               <soas:ZipCode>12345</soas:ZipCode>
+               <soas:PhoneNumber>5127691108</soas:PhoneNumber>
+            </soas:BillingAddress>
+         </soas:Billing>
+         <soas:Shipping>
+            <soas:Address>
+               <soas:FirstName>Daniel</soas:FirstName>
+               <soas:LastName>Day-Lewis</soas:LastName>
+               <soas:AddressLine>555 Beverly Lane</soas:AddressLine>
+               <soas:City>Hollywood</soas:City>
+               <soas:State>CA</soas:State>
+               <soas:ZipCode>12345</soas:ZipCode>
+               <soas:PhoneNumber>5127691108</soas:PhoneNumber>
+            </soas:Address>
+            <soas:ShippingSpeed>Standard</soas:ShippingSpeed>
+         </soas:Shipping>
+         <soas:Email>daniel@localhost</soas:Email>
+         <soas:Items>
+            <soas:Item>
+               <soas:SKU>32779</soas:SKU>
+               <soas:Quantity>5</soas:Quantity>
+               <soas:UnitPrice>4.72</soas:UnitPrice>
+               <soas:Brand>Slaker</soas:Brand>
+               <soas:Model>Water bottle</soas:Model>
+               <soas:Category>2008</soas:Category>
+               <soas:Description>Slaker Water Bottle</soas:Description>
+            </soas:Item>
+            <soas:Item>
+               <soas:SKU>30421</soas:SKU>
+               <soas:Quantity>2</soas:Quantity>
+               <soas:UnitPrice>10.72</soas:UnitPrice>
+               <soas:Brand>Grand Prix</soas:Brand>
+               <soas:Model>Bicycle Tires</soas:Model>
+               <soas:Category>2005</soas:Category>
+               <soas:Description>Grand Prix Bicycle Tires</soas:Description>
+            </soas:Item>
+            <soas:Item>
+               <soas:SKU>32861</soas:SKU>
+               <soas:Quantity>1</soas:Quantity>
+               <soas:UnitPrice>60.72</soas:UnitPrice>
+               <soas:Brand>Safe-T</soas:Brand>
+               <soas:Model>Bicycle helmet</soas:Model>
+               <soas:Category>1829</soas:Category>
+               <soas:Description>Safe-T Helmet</soas:Description>
+            </soas:Item>
+         </soas:Items>
+      </soas:Order>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace instra='http://xmlns.oracle.com/sca/tracking/1.0';
+declare namespace ns1='http://www.oracle.com/soasample';
+declare namespace wsa='http://www.w3.org/2005/08/addressing';
+
+//ns1:OrderAck/ns1:OrderNumber</path><content>50022</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="process" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>

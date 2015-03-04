@@ -1,0 +1,47 @@
+<wsdl:definitions targetNamespace="http://www.oracle.com/ProcessOrder"
+                  xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.oracle.com/ProcessOrder"
+                  xmlns:bpws="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:documentation>
+        <abstractWSDL>http://localhost:7003/soa-infra/services/e2e/ProcessOrder!1.0/WSDLs/ProcessOrderWrapper.wsdl</abstractWSDL>
+    </wsdl:documentation>
+  <plnk:partnerLinkType name="receiveOrder">
+    <plnk:role name="processOrderPortType" portType="tns:processOrderPortType"/>
+  </plnk:partnerLinkType>
+  <wsp:Policy wsu:Id="processOrderBinding_WSAT_policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+              xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsat:ATAssertion wsp:Optional="true" xmlns:wsat="http://schemas.xmlsoap.org/ws/2004/10/wsat"/>
+      </wsp:All>
+      <wsp:All>
+        <wsat11:ATAssertion wsp:Optional="true" xmlns:wsat11="http://docs.oasis-open.org/ws-tx/wsat/2006/06"/>
+      </wsp:All>
+      <wsp:All>
+        <wsat12:ATAssertion wsp:Optional="true" xmlns:wsat12="http://docs.oasis-open.org/ws-tx/wsat/2006/06"/>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:import namespace="http://www.oracle.com/ProcessOrder" location="ProcessOrderWrapper.wsdl"/>
+  <wsdl:binding name="processOrderBinding" type="tns:processOrderPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="process">
+      <soap:operation style="document" soapAction="process"/>
+      <wsp:PolicyReference URI="#processOrderBinding_WSAT_policy" wsdl:required="false"
+                           xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="receiveorder_client_ep">
+    <wsdl:port name="processOrderPort" binding="tns:processOrderBinding">
+      <soap:address location="http://localhost:7003/soa-infra/services/e2e/ProcessOrder/receiveorder_client_ep"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

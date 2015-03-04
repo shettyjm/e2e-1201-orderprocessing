@@ -27,6 +27,7 @@
       <string v="oracle.jdeveloper.model.PathsConfiguration/ResourceBundlesContentSet"/>
    </list>
    <list n="listOfChildren">
+      <hash><url n="URL" path="ProcessOrder/ProcessOrder.jpr"/></hash>
       <hash><url n="URL" path="System/System.jpr"/></hash>
       <hash><url n="URL" path="ValidatePayment/ValidatePayment.jpr"/></hash>
    </list>
@@ -67,6 +68,6 @@
       </hash>
    </hash>
    <hash n="oracle.sb.tooling.ide.core.internal.application.SbApplication">
-      <value n="configContextSessionName" v="OSB-IDE_build_1419287453665"/>
+      <value n="configContextSessionName" v="OSB-IDE_build_1425335200208"/>
    </hash>
 </jws:workspace>
